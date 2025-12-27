@@ -9510,8 +9510,6 @@ END;
 $function$
 ;
 
--- create type "public"."geometry_dump" as ("path" integer[], "geom" public.geometry);
-
 CREATE OR REPLACE FUNCTION public.get_active_beauty_salons()
  RETURNS TABLE(id uuid, salon_name text, description text, address text, phone text, latitude numeric, longitude numeric, rating numeric, total_reviews integer)
  LANGUAGE plpgsql
