@@ -4,39 +4,6 @@ create extension if not exists "postgis" with schema "public";
 
 create extension if not exists "vector" with schema "public";
 
--- Enable pg_net extension for HTTP requests
-create extension if not exists "pg_net" with schema "extensions";
-
--- Create supabase_functions schema if it doesn't exist
-create schema if not exists "supabase_functions";
-
--- Create http_request wrapper function in supabase_functions schema
-create or replace function supabase_functions.http_request(
-  url text,
-  method text default 'GET',
-  headers jsonb default '{}'::jsonb,
-  params jsonb default '{}'::jsonb,
-  timeout_milliseconds integer default 5000
-)
-returns bigint
-language plpgsql
-security definer
-as $$
-declare
-  request_id bigint;
-begin
-  select net.http_request(
-    url := url,
-    method := method::net.http_method,
-    headers := headers,
-    body := params::text::bytea,
-    timeout_milliseconds := timeout_milliseconds
-  ) into request_id;
-  
-  return request_id;
-end;
-$$;
-
 create sequence "public"."beauty_booking_number_seq";
 
 create sequence "public"."hotel_booking_number_seq";
@@ -9509,6 +9476,8 @@ BEGIN
 END;
 $function$
 ;
+
+-- create type "public"."geometry_dump" as ("path" integer[], "geom" public.geometry);
 
 CREATE OR REPLACE FUNCTION public.get_active_beauty_salons()
  RETURNS TABLE(id uuid, salon_name text, description text, address text, phone text, latitude numeric, longitude numeric, rating numeric, total_reviews integer)
