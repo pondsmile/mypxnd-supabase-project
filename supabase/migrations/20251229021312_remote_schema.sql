@@ -1,9 +1,3 @@
-drop policy if exists "Riders can delete chat images" on "storage"."objects";
-
-drop policy if exists "Riders can update chat images" on "storage"."objects";
-
-drop policy if exists "Riders can upload chat images" on "storage"."objects";
-
 drop trigger if exists "sync_active_orders_trigger" on "public"."orders";
 
 drop trigger if exists "sync_store_active_orders_trigger" on "public"."orders";
@@ -1518,6 +1512,10 @@ CREATE TRIGGER trigger_update_zones_updated_at BEFORE UPDATE ON public.zones FOR
 
 CREATE TRIGGER sync_store_active_orders_trigger AFTER INSERT OR DELETE OR UPDATE ON public.orders FOR EACH ROW EXECUTE FUNCTION public.sync_store_active_orders();
 
+drop policy "Riders can delete chat images" on "storage"."objects";
 
+drop policy "Riders can update chat images" on "storage"."objects";
+
+drop policy "Riders can upload chat images" on "storage"."objects";
 
 
