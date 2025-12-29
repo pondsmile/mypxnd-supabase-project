@@ -9477,7 +9477,7 @@ END;
 $function$
 ;
 
-create type "public"."geometry_dump" as ("path" integer[], "geom" public.geometry);
+-- create type "public"."geometry_dump" as ("path" integer[], "geom" public.geometry);
 
 CREATE OR REPLACE FUNCTION public.get_active_beauty_salons()
  RETURNS TABLE(id uuid, salon_name text, description text, address text, phone text, latitude numeric, longitude numeric, rating numeric, total_reviews integer)
@@ -17820,7 +17820,7 @@ create or replace view "public"."v_user_favorite_stores" as  SELECT o.customer_i
   ORDER BY o.customer_id, (count(o.id)) DESC, (max(o.created_at)) DESC;
 
 
-create type "public"."valid_detail" as ("valid" boolean, "reason" character varying, "location" public.geometry);
+-- create type "public"."valid_detail" as ("valid" boolean, "reason" character varying, "location" public.geometry);
 
 CREATE OR REPLACE FUNCTION public.validate_discount_code(p_code text, p_store_id uuid, p_subtotal numeric)
  RETURNS jsonb
