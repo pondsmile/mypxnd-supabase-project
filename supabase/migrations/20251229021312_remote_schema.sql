@@ -8,28 +8,6 @@ drop policy "Riders can update chat messages for assigned orders" on "public"."c
 
 drop policy "Riders can view chat messages for assigned orders" on "public"."chat_messages";
 
-drop view if exists "public"."active_order_chat_messages";
-
-drop view if exists "public"."chat_messages_with_sender_info";
-
-drop view if exists "public"."rider_response_statistics";
-
-drop view if exists "public"."available_orders_for_riders";
-
-drop view if exists "public"."available_riders";
-
-drop view if exists "public"."bookable_orders_for_riders";
-
-drop view if exists "public"."current_rider_assignments";
-
-drop view if exists "public"."rider_profile_view";
-
-drop view if exists "public"."v_daily_best_selling_stores";
-
-drop view if exists "public"."v_daily_new_stores";
-
-drop view if exists "public"."v_daily_small_stores";
-
 
   create table "public"."admin_zones" (
     "id" uuid not null default gen_random_uuid(),
