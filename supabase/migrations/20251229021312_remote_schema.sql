@@ -36,7 +36,6 @@ drop view if exists "public"."v_daily_new_stores";
 
 drop view if exists "public"."v_daily_small_stores";
 
-
   create table "public"."admin_zones" (
     "id" uuid not null default gen_random_uuid(),
     "admin_id" uuid not null,
